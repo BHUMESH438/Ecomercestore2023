@@ -2,7 +2,9 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { HomeLayout, Landing, Error, Products, SingleProduct, Cart, About, Register, Login, Checkout, Orders } from './pages';
 import { ErrorElement } from './components';
 import { loader as landingLoader } from './pages/Landing';
-
+import { loader as singlePageLoader } from './pages/SingleProduct';
+import { loader as allproductsLoader } from './pages/Product';
+//after declaration of loader in every compoenent the loader is passed to the router
 const router = createBrowserRouter([
   {
     path: '/',
@@ -17,11 +19,15 @@ const router = createBrowserRouter([
       },
       {
         path: 'products',
-        element: <Products />
+        element: <Products />,
+        loader: allproductsLoader,
+        errorElement: <ErrorElement />
       },
       {
         path: 'products/:id',
-        element: <SingleProduct />
+        element: <SingleProduct />,
+        loader: singlePageLoader,
+        errorElement: <ErrorElement />
       },
       {
         path: 'cart',

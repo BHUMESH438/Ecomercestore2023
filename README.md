@@ -40,9 +40,9 @@ tailwind.config.cjs
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {}
   },
-  plugins: [],
+  plugins: []
 };
 ```
 
@@ -156,19 +156,7 @@ export { default as Orders } from './Orders';
 App.jsx
 
 ```js
-import {
-  HomeLayout,
-  Landing,
-  Error,
-  Products,
-  SingleProduct,
-  Cart,
-  About,
-  Register,
-  Login,
-  Checkout,
-  Orders,
-} from './pages';
+import { HomeLayout, Landing, Error, Products, SingleProduct, Cart, About, Register, Login, Checkout, Orders } from './pages';
 ```
 
 ## Challenge (4) - React Router
@@ -216,41 +204,41 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Landing />,
+        element: <Landing />
       },
       {
         path: 'products',
-        element: <Products />,
+        element: <Products />
       },
       {
         path: 'products/:id',
-        element: <SingleProduct />,
+        element: <SingleProduct />
       },
       {
         path: 'cart',
-        element: <Cart />,
+        element: <Cart />
       },
       { path: 'about', element: <About /> },
       {
         path: 'checkout',
-        element: <Checkout />,
+        element: <Checkout />
       },
       {
         path: 'orders',
-        element: <Orders />,
-      },
-    ],
+        element: <Orders />
+      }
+    ]
   },
   {
     path: '/login',
     element: <Login />,
-    errorElement: <Error />,
+    errorElement: <Error />
   },
   {
     path: '/register',
     element: <Register />,
-    errorElement: <Error />,
-  },
+    errorElement: <Error />
+  }
 ]);
 
 const App = () => {
@@ -326,12 +314,8 @@ const Error = () => {
       <main className='grid min-h-[100vh] place-items-center px-8 '>
         <div className='text-center'>
           <p className='text-9xl font-semibold text-primary'>404</p>
-          <h1 className='mt-4 text-3xl font-bold tracking-tight sm:text-5xl'>
-            Page not found
-          </h1>
-          <p className='mt-6 text-lg leading-7 '>
-            Sorry, we couldn’t find the page you’re looking for.
-          </p>
+          <h1 className='mt-4 text-3xl font-bold tracking-tight sm:text-5xl'>Page not found</h1>
+          <p className='mt-6 text-lg leading-7 '>Sorry, we couldn’t find the page you’re looking for.</p>
           <div className='mt-10 '>
             <Link to='/' className='btn btn-secondary'>
               Go back home
@@ -402,12 +386,7 @@ const FormInput = ({ label, name, type, defaultValue }) => {
       <label className='label'>
         <span className='label-text capitalize'>{label}</span>
       </label>
-      <input
-        type={type}
-        name={name}
-        defaultValue={defaultValue}
-        className='input input-bordered '
-      />
+      <input type={type} name={name} defaultValue={defaultValue} className='input input-bordered ' />
     </div>
   );
 };
@@ -503,23 +482,10 @@ import { Form, Link } from 'react-router-dom';
 const Login = () => {
   return (
     <section className='h-screen grid place-items-center'>
-      <Form
-        method='post'
-        className='card w-96 p-8 bg-base-100 shadow-lg flex flex-col gap-y-4'
-      >
+      <Form method='post' className='card w-96 p-8 bg-base-100 shadow-lg flex flex-col gap-y-4'>
         <h4 className='text-center text-3xl font-bold'>Login</h4>
-        <FormInput
-          type='email'
-          label='email'
-          name='identifier'
-          defaultValue='test@test.com'
-        />
-        <FormInput
-          type='password'
-          label='password'
-          name='password'
-          defaultValue='secret'
-        />
+        <FormInput type='email' label='email' name='identifier' defaultValue='test@test.com' />
+        <FormInput type='password' label='password' name='password' defaultValue='secret' />
         <div className='mt-4'>
           <SubmitBtn text='login' />
         </div>
@@ -528,10 +494,7 @@ const Login = () => {
         </button>
         <p className='text-center'>
           Not a member yet?
-          <Link
-            to='/register'
-            className='ml-2 link link-hover link-primary capitalize'
-          >
+          <Link to='/register' className='ml-2 link link-hover link-primary capitalize'>
             register
           </Link>
         </p>
@@ -550,11 +513,7 @@ const SubmitBtn = ({ text }) => {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   return (
-    <button
-      type='submit'
-      className='btn btn-primary btn-block'
-      disabled={isSubmitting}
-    >
+    <button type='submit' className='btn btn-primary btn-block' disabled={isSubmitting}>
       {isSubmitting ? (
         <>
           <span className='loading loading-spinner'></span>
@@ -621,10 +580,7 @@ import { Form, Link } from 'react-router-dom';
 const Register = () => {
   return (
     <section className='h-screen grid place-items-center'>
-      <Form
-        method='POST'
-        className='card w-96 p-8 bg-base-100 shadow-lg flex flex-col gap-y-4'
-      >
+      <Form method='POST' className='card w-96 p-8 bg-base-100 shadow-lg flex flex-col gap-y-4'>
         <h4 className='text-center text-3xl font-bold'>Register</h4>
         <FormInput type='text' label='username' name='username' />
         <FormInput type='email' label='email' name='email' />
@@ -635,10 +591,7 @@ const Register = () => {
 
         <p className='text-center'>
           Already a member?
-          <Link
-            to='/login'
-            className='ml-2 link link-hover link-primary capitalize'
-          >
+          <Link to='/login' className='ml-2 link link-hover link-primary capitalize'>
             login
           </Link>
         </p>
@@ -796,10 +749,7 @@ const Navbar = () => {
       <div className='navbar align-element '>
         <div className='navbar-start'>
           {/* Title */}
-          <NavLink
-            to='/'
-            className='hidden lg:flex btn btn-primary text-3xl items-center '
-          >
+          <NavLink to='/' className='hidden lg:flex btn btn-primary text-3xl items-center '>
             C
           </NavLink>
           {/* DROPDOWN */}
@@ -807,10 +757,7 @@ const Navbar = () => {
             <label tabIndex={0} className='btn btn-ghost lg:hidden'>
               <FaBarsStaggered className='h-6 w-6' />
             </label>
-            <ul
-              tabIndex={0}
-              className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52'
-            >
+            <ul tabIndex={0} className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52'>
               nav links
             </ul>
           </div>
@@ -824,9 +771,7 @@ const Navbar = () => {
           <NavLink to='cart' className='btn btn-ghost btn-circle btn-md ml-4'>
             <div className='indicator'>
               <BsCart3 className='h-6 w-6' />
-              <span className='badge badge-sm badge-primary indicator-item'>
-                8
-              </span>
+              <span className='badge badge-sm badge-primary indicator-item'>8</span>
             </div>
           </NavLink>
         </div>
@@ -880,14 +825,14 @@ const links = [
   { id: 3, url: 'products', text: 'products' },
   { id: 4, url: 'cart', text: 'cart' },
   { id: 5, url: 'checkout', text: 'checkout' },
-  { id: 6, url: 'orders', text: 'orders' },
+  { id: 6, url: 'orders', text: 'orders' }
 ];
 import { NavLink } from 'react-router-dom';
 
 const NavLinks = () => {
   return (
     <>
-      {links.map((link) => {
+      {links.map(link => {
         const { id, url, text } = link;
         return (
           <li key={id}>
@@ -1034,23 +979,14 @@ const About = () => {
   return (
     <>
       <div className='flex flex-wrap gap-2 sm:gap-x-6 items-center justify-center'>
-        <h1 className='text-4xl font-bold leading-none tracking-tight sm:text-6xl '>
-          We love
-        </h1>
+        <h1 className='text-4xl font-bold leading-none tracking-tight sm:text-6xl '>We love</h1>
         <div className='stats bg-primary shadow'>
           <div className='stat'>
-            <div className='stat-title text-primary-content text-4xl font-bold tracking-widest'>
-              comfy
-            </div>
+            <div className='stat-title text-primary-content text-4xl font-bold tracking-widest'>comfy</div>
           </div>
         </div>
       </div>
-      <p className='mt-6 text-lg leading-8 max-w-2xl mx-auto'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic veniam
-        odit, officiis eos mollitia alias, doloremque, aspernatur ratione
-        asperiores voluptas labore minus dolores reprehenderit corporis quos.
-        Assumenda molestias harum dignissimos?
-      </p>
+      <p className='mt-6 text-lg leading-8 max-w-2xl mx-auto'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic veniam odit, officiis eos mollitia alias, doloremque, aspernatur ratione asperiores voluptas labore minus dolores reprehenderit corporis quos. Assumenda molestias harum dignissimos?</p>
     </>
   );
 };
@@ -1098,16 +1034,9 @@ const Hero = () => {
   return (
     <div className=' grid grid-cols-1 lg:grid-cols-2 gap-24 items-center'>
       <div>
-        <h1 className='max-w-2xl text-4xl font-bold tracking-tight  sm:text-6xl '>
-          We’re changing the way people shop.
-        </h1>
+        <h1 className='max-w-2xl text-4xl font-bold tracking-tight  sm:text-6xl '>We’re changing the way people shop.</h1>
 
-        <p className='mt-8 max-w-xl text-lg leading-8'>
-          Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem
-          cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat
-          aliqua. Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
-          qui lorem cupidatat commodo.
-        </p>
+        <p className='mt-8 max-w-xl text-lg leading-8'>Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua. Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.</p>
         <div className='mt-10 '>
           <Link to='products' className='btn btn-primary '>
             Our Products
@@ -1118,10 +1047,7 @@ const Hero = () => {
         {carouselImages.map((image, index) => {
           return (
             <div key={image} className='carousel-item'>
-              <img
-                src={image}
-                className='rounded-box h-full w-80  object-cover'
-              />
+              <img src={image} className='rounded-box h-full w-80  object-cover' />
             </div>
           );
         })}
@@ -1149,7 +1075,7 @@ import axios from 'axios';
 const productionUrl = 'https://strapi-store-server.onrender.com/api';
 
 export const customFetch = axios.create({
-  baseURL: productionUrl,
+  baseURL: productionUrl
 });
 ```
 
@@ -1216,10 +1142,10 @@ const router = createBrowserRouter([
         index: true,
         element: <Landing />,
         loader: landingLoader,
-        errorElement: ErrorElement,
-      },
-    ],
-  },
+        errorElement: ErrorElement
+      }
+    ]
+  }
 ]);
 ```
 
@@ -1366,21 +1292,13 @@ const ProductsGrid = () => {
 
   return (
     <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3 '>
-      {products.map((product) => {
+      {products.map(product => {
         const { title, price, image } = product.attributes;
         const dollarsAmount = price;
         return (
-          <Link
-            key={product.id}
-            to={`/products/${product.id}`}
-            className='card w-full  shadow-xl hover:shadow-2xl transition duration-300 '
-          >
+          <Link key={product.id} to={`/products/${product.id}`} className='card w-full  shadow-xl hover:shadow-2xl transition duration-300 '>
             <figure className='px-4 pt-4'>
-              <img
-                src={image}
-                alt={title}
-                className='rounded-xl h-64 md:h-48 w-full object-cover'
-              />
+              <img src={image} alt={title} className='rounded-xl h-64 md:h-48 w-full object-cover' />
             </figure>
             <div className='card-body items-center text-center'>
               <h2 className='card-title capitalize tracking-wider'>{title}</h2>
@@ -1407,10 +1325,10 @@ export default ProductsGrid;
 - utils/index.js
 
 ```js
-export const formatPrice = (price) => {
+export const formatPrice = price => {
   const dollarsAmount = new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'USD'
   }).format((price / 100).toFixed(2));
   return dollarsAmount;
 };
@@ -1502,13 +1420,12 @@ export const loader = async ({ params }) => {
 
 const SingleProduct = () => {
   const { product } = useLoaderData();
-  const { image, title, price, description, colors, company } =
-    product.attributes;
+  const { image, title, price, description, colors, company } = product.attributes;
   const dollarsAmount = formatPrice(price);
   const [productColor, setProductColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
 
-  const handleAmount = (e) => {
+  const handleAmount = e => {
     setAmount(parseInt(e.target.value));
   };
 
@@ -1527,17 +1444,11 @@ const SingleProduct = () => {
       {/* PRODUCT */}
       <div className='mt-6 grid gap-y-8 lg:grid-cols-2  lg:gap-x-16'>
         {/* IMAGE */}
-        <img
-          src={image}
-          alt={title}
-          className='w-96 h-96 object-cover rounded-lg lg:w-full  '
-        />
+        <img src={image} alt={title} className='w-96 h-96 object-cover rounded-lg lg:w-full  ' />
         {/* PRODUCT INFO */}
         <div>
           <h1 className='capitalize text-3xl font-bold'>{title}</h1>
-          <h4 className='text-xl text-neutral-content font-bold mt-2'>
-            {company}
-          </h4>
+          <h4 className='text-xl text-neutral-content font-bold mt-2'>{company}</h4>
 
           <p className='mt-3 text-xl'>{dollarsAmount}</p>
 
@@ -1545,37 +1456,19 @@ const SingleProduct = () => {
 
           {/* COLORS */}
           <div className='mt-6'>
-            <h4 className='text-md font-medium tracking-wider capitalize'>
-              colors
-            </h4>
+            <h4 className='text-md font-medium tracking-wider capitalize'>colors</h4>
             <div className='mt-2'>
-              {colors.map((color) => {
-                return (
-                  <button
-                    key={color}
-                    type='button'
-                    className={`badge  w-6 h-6 mr-2  ${
-                      color === productColor && 'border-2 border-secondary'
-                    }`}
-                    style={{ backgroundColor: color }}
-                    onClick={() => setProductColor(color)}
-                  ></button>
-                );
+              {colors.map(color => {
+                return <button key={color} type='button' className={`badge  w-6 h-6 mr-2  ${color === productColor && 'border-2 border-secondary'}`} style={{ backgroundColor: color }} onClick={() => setProductColor(color)}></button>;
               })}
             </div>
           </div>
           {/* AMOUNT */}
           <div className='form-control w-full max-w-xs'>
             <label className='label'>
-              <h4 className='text-md font-medium tracking-wider capitalize'>
-                amount
-              </h4>
+              <h4 className='text-md font-medium tracking-wider capitalize'>amount</h4>
             </label>
-            <select
-              className='select select-secondary select-bordered select-md'
-              value={amount}
-              onChange={handleAmount}
-            >
+            <select className='select select-secondary select-bordered select-md' value={amount} onChange={handleAmount}>
               <option value={1}>1</option>
               <option value={2}>2</option>
               <option value={3}>3</option>
@@ -1583,10 +1476,7 @@ const SingleProduct = () => {
           </div>
           {/* CART BUTTON */}
           <div className='mt-10 '>
-            <button
-              className='btn btn-secondary btn-md'
-              onClick={() => console.log('add to bag')}
-            >
+            <button className='btn btn-secondary btn-md' onClick={() => console.log('add to bag')}>
               Add to bag
             </button>
           </div>
@@ -1605,7 +1495,7 @@ export default SingleProduct;
 index.jsx
 
 ```js
-export const generateAmountOptions = (number) => {
+export const generateAmountOptions = number => {
   return Array.from({ length: number }, (_, index) => {
     const amount = index + 1;
 
@@ -1808,33 +1698,21 @@ const ProductList = () => {
   const { products } = useLoaderData();
   return (
     <div className='mt-12 grid gap-y-8'>
-      {products.map((product) => {
+      {products.map(product => {
         const { title, price, image, company } = product.attributes;
         const dollarsAmount = formatPrice(price);
 
         return (
-          <Link
-            key={product.id}
-            to={`/products/${product.id}`}
-            className='p-8 rounded-lg flex flex-col sm:flex-row gap-y-4 flex-wrap bg-base-100 shadow-xl hover:shadow-2xl duration-300 group'
-          >
-            <img
-              src={image}
-              alt={title}
-              className='h-24 w-24 rounded-lg sm:h-32 sm:w-32 object-cover group-hover:scale-105 transition duration-300'
-            />
+          <Link key={product.id} to={`/products/${product.id}`} className='p-8 rounded-lg flex flex-col sm:flex-row gap-y-4 flex-wrap bg-base-100 shadow-xl hover:shadow-2xl duration-300 group'>
+            <img src={image} alt={title} className='h-24 w-24 rounded-lg sm:h-32 sm:w-32 object-cover group-hover:scale-105 transition duration-300' />
             <div className='ml-0 sm:ml-16'>
               <h3 className='capitalize font-medium text-lg'>{title}</h3>
-              <h4 className='capitalize text-md text-neutral-content'>
-                {company}
-              </h4>
+              <h4 className='capitalize text-md text-neutral-content'>{company}</h4>
 
               {/* COLOR */}
             </div>
 
-            <p className='font-medium ml-0 sm:ml-auto text-lg'>
-              {dollarsAmount}
-            </p>
+            <p className='font-medium ml-0 sm:ml-auto text-lg'>{dollarsAmount}</p>
           </Link>
         );
       })}
@@ -1859,12 +1737,8 @@ const ProductsContainer = () => {
   const totalProducts = meta.pagination.total;
   const [layout, setLayout] = useState('grid');
 
-  const setActiveStyles = (pattern) => {
-    return `text-xl btn btn-circle btn-sm ${
-      pattern === layout
-        ? 'btn-primary text-primary-content'
-        : 'btn-ghost text-base-content'
-    }`;
+  const setActiveStyles = pattern => {
+    return `text-xl btn btn-circle btn-sm ${pattern === layout ? 'btn-primary text-primary-content' : 'btn-ghost text-base-content'}`;
   };
 
   return (
@@ -1875,34 +1749,18 @@ const ProductsContainer = () => {
           {totalProducts} product{totalProducts > 1 && 's'}
         </h4>
         <div className='flex gap-x-2'>
-          <button
-            onClick={() => setLayout('grid')}
-            className={setActiveStyles('grid')}
-          >
+          <button onClick={() => setLayout('grid')} className={setActiveStyles('grid')}>
             <BsFillGridFill />
           </button>
 
-          <button
-            onClick={() => setLayout('list')}
-            className={setActiveStyles('list')}
-          >
+          <button onClick={() => setLayout('list')} className={setActiveStyles('list')}>
             <BsList />
           </button>
         </div>
       </div>
 
       {/* PRODUCTS */}
-      <div>
-        {totalProducts === 0 ? (
-          <h5 className='text-2xl mt-16'>
-            Sorry, no products matched your search...
-          </h5>
-        ) : layout === 'grid' ? (
-          <ProductsGrid />
-        ) : (
-          <ProductsList />
-        )}
-      </div>
+      <div>{totalProducts === 0 ? <h5 className='text-2xl mt-16'>Sorry, no products matched your search...</h5> : layout === 'grid' ? <ProductsGrid /> : <ProductsList />}</div>
     </>
   );
 };
@@ -1926,12 +1784,7 @@ const FormInput = ({ label, name, type, defaultValue, size }) => {
       <label htmlFor={name} className='label'>
         <span className='label-text capitalize'>{label}</span>
       </label>
-      <input
-        type={type}
-        name={name}
-        defaultValue={defaultValue}
-        className={`input input-bordered ${size}`}
-      />
+      <input type={type} name={name} defaultValue={defaultValue} className={`input input-bordered ${size}`} />
     </div>
   );
 };
@@ -1948,12 +1801,7 @@ const Filters = () => {
   return (
     <Form className='bg-base-200 rounded-md px-8 py-4 grid gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center'>
       {/* SEARCH */}
-      <FormInput
-        type='search'
-        label='search product'
-        name='search'
-        size='input-sm'
-      />
+      <FormInput type='search' label='search product' name='search' size='input-sm' />
       {/* BUTTONS */}
       <button type='submit' className='btn btn-primary btn-sm '>
         search
@@ -2018,13 +1866,8 @@ const FormSelect = ({ label, name, list, defaultValue, size }) => {
       <label htmlFor={name} className='label'>
         <span className='label-text capitalize'>{label}</span>
       </label>
-      <select
-        name={name}
-        id={name}
-        className={`select select-bordered ${size}`}
-        defaultValue={defaultValue}
-      >
-        {list.map((item) => {
+      <select name={name} id={name} className={`select select-bordered ${size}`} defaultValue={defaultValue}>
+        {list.map(item => {
           return (
             <option key={item} value={item}>
               {item}
@@ -2046,30 +1889,15 @@ const { meta } = useLoaderData();
 {
   /* CATEGORIES */
 }
-<FormSelect
-  label='select category'
-  name='category'
-  list={meta.categories}
-  size='select-sm'
-/>;
+<FormSelect label='select category' name='category' list={meta.categories} size='select-sm' />;
 {
   /* COMPANIES */
 }
-<FormSelect
-  label='select company'
-  name='company'
-  list={meta.companies}
-  size='select-sm'
-/>;
+<FormSelect label='select company' name='company' list={meta.companies} size='select-sm' />;
 {
   /* ORDER */
 }
-<FormSelect
-  label='sort by'
-  name='order'
-  list={['a-z', 'z-a', 'high', 'low']}
-  size='select-sm'
-/>;
+<FormSelect label='sort by' name='order' list={['a-z', 'z-a', 'high', 'low']} size='select-sm' />;
 ```
 
 ## Challenge (27) - Filters (Price)
@@ -2133,16 +1961,7 @@ const FormRange = ({ label, name, size }) => {
         <span className='label-text capitalize'>{label}</span>
         <span>{formatPrice(selectedPrice)}</span>
       </label>
-      <input
-        type='range'
-        name={name}
-        min={0}
-        max={maxPrice}
-        value={selectedPrice}
-        onChange={(e) => setSelectedPrice(e.target.value)}
-        className={`range range-primary ${size}`}
-        step={step}
-      />
+      <input type='range' name={name} min={0} max={maxPrice} value={selectedPrice} onChange={e => setSelectedPrice(e.target.value)} className={`range range-primary ${size}`} step={step} />
       <div className='w-full flex justify-between text-xs px-2 mt-2'>
         <span className='font-bold text-md'>0</span>
         <span className='font-bold text-md'>Max : {formatPrice(maxPrice)}</span>
@@ -2210,12 +2029,7 @@ const FormCheckbox = ({ label, name, defaultValue, size }) => {
       <label htmlFor={name} className='label cursor-pointer'>
         <span className='label-text capitalize'>{label}</span>
       </label>
-      <input
-        type='checkbox'
-        name={name}
-        defaultChecked={defaultValue}
-        className={`checkbox checkbox-primary ${size}`}
-      />
+      <input type='checkbox' name={name} defaultChecked={defaultValue} className={`checkbox checkbox-primary ${size}`} />
     </div>
   );
 };
@@ -2351,9 +2165,7 @@ Products.jsx
 
 ```js
 export const loader = async ({ request }) => {
-  const params = Object.fromEntries([
-    ...new URL(request.url).searchParams.entries(),
-  ]);
+  const params = Object.fromEntries([...new URL(request.url).searchParams.entries()]);
   const response = await customFetch(url, { params });
 
   const products = response.data.data;
@@ -2377,51 +2189,17 @@ const Filters = () => {
   return (
     <Form className='bg-base-200 rounded-md px-8 py-4 grid gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center'>
       {/* SEARCH */}
-      <FormInput
-        type='search'
-        label='search product'
-        name='search'
-        defaultValue={search}
-        size='input-sm'
-      />
+      <FormInput type='search' label='search product' name='search' defaultValue={search} size='input-sm' />
       {/* CATEGORIES */}
-      <FormSelect
-        label='select category'
-        name='category'
-        list={meta.categories}
-        defaultValue={category}
-        size='select-sm'
-      />
+      <FormSelect label='select category' name='category' list={meta.categories} defaultValue={category} size='select-sm' />
       {/* COMPANIES */}
-      <FormSelect
-        label='select company'
-        name='company'
-        list={meta.companies}
-        defaultValue={company}
-        size='select-sm'
-      />
+      <FormSelect label='select company' name='company' list={meta.companies} defaultValue={company} size='select-sm' />
       {/* ORDER */}
-      <FormSelect
-        label='sort by'
-        name='order'
-        list={['a-z', 'z-a', 'high', 'low']}
-        defaultValue={order}
-        size='select-sm'
-      />
+      <FormSelect label='sort by' name='order' list={['a-z', 'z-a', 'high', 'low']} defaultValue={order} size='select-sm' />
       {/* PRICE */}
-      <FormRange
-        label='select price'
-        name='price'
-        price={price}
-        size='range-sm'
-      />
+      <FormRange label='select price' name='price' price={price} size='range-sm' />
       {/* SHIPPING */}
-      <FormCheckbox
-        label='free shipping'
-        name='shipping'
-        defaultValue={shipping}
-        size='checkbox-sm'
-      />
+      <FormCheckbox label='free shipping' name='shipping' defaultValue={shipping} size='checkbox-sm' />
       {/* BUTTONS */}
       <button type='submit' className='btn btn-primary btn-sm'>
         search
@@ -2436,9 +2214,7 @@ export default Filters;
 ```
 
 ```js
-const params = Object.fromEntries([
-  ...new URL(request.url).searchParams.entries(),
-]);
+const params = Object.fromEntries([...new URL(request.url).searchParams.entries()]);
 ```
 
 It takes a URL string from the request.url property.
@@ -2524,7 +2300,7 @@ const PaginationContainer = () => {
   const { search, pathname } = useLocation();
   const navigate = useNavigate();
 
-  const handlePageChange = (pageNumber) => {
+  const handlePageChange = pageNumber => {
     const searchParams = new URLSearchParams(search);
     searchParams.set('page', pageNumber);
     navigate(`${pathname}?${searchParams.toString()}`);
@@ -2545,15 +2321,9 @@ const PaginationContainer = () => {
         >
           Prev
         </button>
-        {pages.map((pageNumber) => {
+        {pages.map(pageNumber => {
           return (
-            <button
-              onClick={() => handlePageChange(pageNumber)}
-              key={pageNumber}
-              className={`btn btn-xs sm:btn-md border-none join-item ${
-                pageNumber === page ? 'bg-base-300 border-base-300' : ''
-              }`}
-            >
+            <button onClick={() => handlePageChange(pageNumber)} key={pageNumber} className={`btn btn-xs sm:btn-md border-none join-item ${pageNumber === page ? 'bg-base-300 border-base-300' : ''}`}>
               {pageNumber}
             </button>
           );
@@ -2638,7 +2408,7 @@ const defaultState = {
   cartTotal: 0,
   shipping: 500,
   tax: 0,
-  orderTotal: 0,
+  orderTotal: 0
 };
 
 const cartSlice = createSlice({
@@ -2648,11 +2418,11 @@ const cartSlice = createSlice({
     addItem: (state, action) => {
       console.log(action.payload);
     },
-    clearCart: (state) => {},
+    clearCart: state => {},
 
     removeItem: (state, action) => {},
-    editItem: (state, action) => {},
-  },
+    editItem: (state, action) => {}
+  }
 });
 
 export const { addItem, removeItem, editItem, clearCart } = cartSlice.actions;
@@ -2668,8 +2438,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import cartReducer from './features/cart/cartSlice';
 export const store = configureStore({
   reducer: {
-    cartState: cartReducer,
-  },
+    cartState: cartReducer
+  }
 });
 ```
 
@@ -2716,7 +2486,7 @@ const SingleProduct = () => {
     price,
     amount,
     productColor,
-    company,
+    company
   };
 
   const addToCart = () => {
@@ -2786,7 +2556,7 @@ Navbar.jsx
 
 ```js
 import { useSelector } from 'react-redux';
-const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
+const numItemsInCart = useSelector(state => state.cartState.numItemsInCart);
 ```
 
 cartSlice.js
@@ -2844,7 +2614,7 @@ const defaultState = {
   cartTotal: 0,
   shipping: 500,
   tax: 0,
-  orderTotal: 0,
+  orderTotal: 0
 };
 
 const getCartFromLocalStorage = () => {
@@ -2858,7 +2628,7 @@ const cartSlice = createSlice({
     addItem: (state, action) => {
       const { product } = action.payload;
 
-      const item = state.cartItems.find((i) => i.cartID === product.cartID);
+      const item = state.cartItems.find(i => i.cartID === product.cartID);
       if (item) {
         item.amount += product.amount;
       } else {
@@ -2869,17 +2639,17 @@ const cartSlice = createSlice({
       cartSlice.caseReducers.calculateTotals(state);
       toast.success('item added to cart');
     },
-    clearCart: (state) => {},
+    clearCart: state => {},
 
     removeItem: (state, action) => {},
     editItem: (state, action) => {},
 
-    calculateTotals: (state) => {
+    calculateTotals: state => {
       state.tax = 0.1 * state.cartTotal;
       state.orderTotal = state.cartTotal + state.shipping + state.tax;
       localStorage.setItem('cart', JSON.stringify(state));
-    },
-  },
+    }
+  }
 });
 
 export const { addItem, removeItem, editItem, clearCart } = cartSlice.actions;
@@ -2972,7 +2742,7 @@ const defaultState = {
   cartTotal: 0,
   shipping: 500,
   tax: 0,
-  orderTotal: 0,
+  orderTotal: 0
 };
 
 const getCartFromLocalStorage = () => {
@@ -2986,7 +2756,7 @@ const cartSlice = createSlice({
     addItem: (state, action) => {
       const { product } = action.payload;
 
-      const item = state.cartItems.find((i) => i.cartID === product.cartID);
+      const item = state.cartItems.find(i => i.cartID === product.cartID);
       if (item) {
         item.amount += product.amount;
       } else {
@@ -2997,15 +2767,15 @@ const cartSlice = createSlice({
       cartSlice.caseReducers.calculateTotals(state);
       toast.success('item added to cart');
     },
-    clearCart: (state) => {
+    clearCart: state => {
       localStorage.setItem('cart', JSON.stringify(defaultState));
       return defaultState;
     },
 
     removeItem: (state, action) => {
       const { cartID } = action.payload;
-      const product = state.cartItems.find((i) => i.cartID === cartID);
-      state.cartItems = state.cartItems.filter((i) => i.cartID !== cartID);
+      const product = state.cartItems.find(i => i.cartID === cartID);
+      state.cartItems = state.cartItems.filter(i => i.cartID !== cartID);
 
       state.numItemsInCart -= product.amount;
       state.cartTotal -= product.price * product.amount;
@@ -3014,7 +2784,7 @@ const cartSlice = createSlice({
     },
     editItem: (state, action) => {
       const { cartID, amount } = action.payload;
-      const item = state.cartItems.find((i) => i.cartID === cartID);
+      const item = state.cartItems.find(i => i.cartID === cartID);
       state.numItemsInCart += amount - item.amount;
       state.cartTotal += item.price * (amount - item.amount);
       item.amount = amount;
@@ -3022,12 +2792,12 @@ const cartSlice = createSlice({
       toast.success('Cart updated');
     },
 
-    calculateTotals: (state) => {
+    calculateTotals: state => {
       state.tax = 0.1 * state.cartTotal;
       state.orderTotal = state.cartTotal + state.shipping + state.tax;
       localStorage.setItem('cart', JSON.stringify(state));
-    },
-  },
+    }
+  }
 });
 
 export const { addItem, removeItem, editItem, clearCart } = cartSlice.actions;
@@ -3110,7 +2880,7 @@ import { Link } from 'react-router-dom';
 const Cart = () => {
   // temp
   const user = null;
-  const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
+  const numItemsInCart = useSelector(state => state.cartState.numItemsInCart);
   if (numItemsInCart === 0) {
     return <SectionTitle text='Your cart is empty' />;
   }
@@ -3184,9 +2954,7 @@ export default Cart;
 import { useSelector } from 'react-redux';
 import { formatPrice } from '../utils';
 const CartTotals = () => {
-  const { cartTotal, shipping, tax, orderTotal } = useSelector(
-    (state) => state.cartState
-  );
+  const { cartTotal, shipping, tax, orderTotal } = useSelector(state => state.cartState);
 
   return (
     <div className='card bg-base-200'>
@@ -3299,11 +3067,11 @@ CartItemsList.jsx
 import { useSelector } from 'react-redux';
 import CartItem from './CartItem';
 const CartItemsList = () => {
-  const cartItems = useSelector((state) => state.cartState.cartItems);
+  const cartItems = useSelector(state => state.cartState.cartItems);
 
   return (
     <div>
-      {cartItems.map((item) => {
+      {cartItems.map(item => {
         return <CartItem key={item.cartID} cartItem={item} />;
       })}
     </div>
@@ -3324,39 +3092,25 @@ const CartItem = ({ cartItem }) => {
   const removeItemFromTheCart = () => {
     dispatch(removeItem({ cartID }));
   };
-  const handleAmount = (e) => {
+  const handleAmount = e => {
     dispatch(editItem({ cartID, amount: parseInt(e.target.value) }));
   };
 
-  const { cartID, title, price, image, amount, company, productColor } =
-    cartItem;
+  const { cartID, title, price, image, amount, company, productColor } = cartItem;
 
   return (
-    <article
-      key={cartID}
-      className='mb-12 flex flex-col gap-y-4 sm:flex-row flex-wrap border-b border-base-300 pb-6 last:border-b-0'
-    >
+    <article key={cartID} className='mb-12 flex flex-col gap-y-4 sm:flex-row flex-wrap border-b border-base-300 pb-6 last:border-b-0'>
       {/* IMAGE */}
-      <img
-        src={image}
-        alt={title}
-        className='h-24 w-24 rounded-lg sm:h-32 sm:w-32 object-cover'
-      />
+      <img src={image} alt={title} className='h-24 w-24 rounded-lg sm:h-32 sm:w-32 object-cover' />
       {/* INFO */}
       <div className='sm:ml-16 sm:w-48'>
         {/* TITLE */}
         <h3 className='capitalize font-medium'>{title}</h3>
         {/* COMPANY */}
-        <h4 className='mt-2 capitalize text-sm text-neutral-content'>
-          {company}
-        </h4>
+        <h4 className='mt-2 capitalize text-sm text-neutral-content'>{company}</h4>
         {/* COLOR */}
         <p className='mt-4 text-sm capitalize flex items-center gap-x-2'>
-          color :
-          <span
-            className='badge badge-sm'
-            style={{ backgroundColor: productColor }}
-          ></span>
+          color :<span className='badge badge-sm' style={{ backgroundColor: productColor }}></span>
         </p>
       </div>
       <div className='sm:ml-12'>
@@ -3365,21 +3119,12 @@ const CartItem = ({ cartItem }) => {
           <label htmlFor='amount' className='label p-0'>
             <span className='label-text'>Amount</span>
           </label>
-          <select
-            name='amount'
-            id='amount'
-            className='mt-2 select select-base select-bordered select-xs'
-            value={amount}
-            onChange={handleAmount}
-          >
+          <select name='amount' id='amount' className='mt-2 select select-base select-bordered select-xs' value={amount} onChange={handleAmount}>
             {generateAmountOptions(amount + 5)}
           </select>
         </div>
         {/* REMOVE */}
-        <button
-          className='mt-2 link link-primary link-hover text-sm'
-          onClick={removeItemFromTheCart}
-        >
+        <button className='mt-2 link link-primary link-hover text-sm' onClick={removeItemFromTheCart}>
           remove
         </button>
       </div>
@@ -3395,7 +3140,7 @@ export default CartItem;
 CartItem.jsx
 
 ```js
-<div className='sm:ml-12'>
+
   {/* AMOUNT */}
   {/* REMOVE */}
 </div>
@@ -3451,7 +3196,7 @@ import { toast } from 'react-toastify';
 
 const initialState = {
   user: { username: 'coding addict' },
-  theme: 'dracula',
+  theme: 'dracula'
 };
 
 const userSlice = createSlice({
@@ -3461,13 +3206,13 @@ const userSlice = createSlice({
     loginUser: (state, action) => {
       console.log('login');
     },
-    logoutUser: (state) => {
+    logoutUser: state => {
       console.log('logout');
     },
-    toggleTheme: (state) => {
+    toggleTheme: state => {
       console.log('toggle theme');
-    },
-  },
+    }
+  }
 });
 
 export const { loginUser, logoutUser, toggleTheme } = userSlice.actions;
@@ -3486,8 +3231,8 @@ import userReducer from './features/user/userSlice';
 export const store = configureStore({
   reducer: {
     cartState: cartReducer,
-    userState: userReducer,
-  },
+    userState: userReducer
+  }
 });
 ```
 
@@ -3505,7 +3250,7 @@ import { toast } from 'react-toastify';
 
 const themes = {
   winter: 'winter',
-  dracula: 'dracula',
+  dracula: 'dracula'
 };
 
 const getThemeFromLocalStorage = () => {
@@ -3516,7 +3261,7 @@ const getThemeFromLocalStorage = () => {
 
 const initialState = {
   user: { username: 'coding addict' },
-  theme: getThemeFromLocalStorage(),
+  theme: getThemeFromLocalStorage()
 };
 
 const userSlice = createSlice({
@@ -3526,16 +3271,16 @@ const userSlice = createSlice({
     loginUser: (state, action) => {
       console.log('login');
     },
-    logoutUser: (state) => {
+    logoutUser: state => {
       console.log('logout');
     },
-    toggleTheme: (state) => {
+    toggleTheme: state => {
       const { dracula, winter } = themes;
       state.theme = state.theme === dracula ? winter : dracula;
       document.documentElement.setAttribute('data-theme', state.theme);
       localStorage.setItem('theme', state.theme);
-    },
-  },
+    }
+  }
 });
 
 export const { loginUser, logoutUser, toggleTheme } = userSlice.actions;
@@ -3555,7 +3300,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from '../features/user/userSlice';
 
 const Navbar = () => {
-  const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
+  const numItemsInCart = useSelector(state => state.cartState.numItemsInCart);
 
   const dispatch = useDispatch();
   const handleTheme = () => {
@@ -3566,10 +3311,7 @@ const Navbar = () => {
       <div className='navbar align-element '>
         <div className='navbar-start'>
           {/* Title */}
-          <NavLink
-            to='/'
-            className='hidden lg:flex btn btn-primary text-3xl items-center '
-          >
+          <NavLink to='/' className='hidden lg:flex btn btn-primary text-3xl items-center '>
             C
           </NavLink>
           {/* DROPDOWN */}
@@ -3577,10 +3319,7 @@ const Navbar = () => {
             <label tabIndex={0} className='btn btn-ghost lg:hidden'>
               <FaBarsStaggered className='h-6 w-6' />
             </label>
-            <ul
-              tabIndex={0}
-              className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52'
-            >
+            <ul tabIndex={0} className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52'>
               <NavLinks />
             </ul>
           </div>
@@ -3606,9 +3345,7 @@ const Navbar = () => {
           <NavLink to='cart' className='btn btn-ghost btn-circle btn-md ml-4'>
             <div className='indicator'>
               <BsCart3 className='h-6 w-6' />
-              <span className='badge badge-sm badge-primary indicator-item'>
-                {numItemsInCart}
-              </span>
+              <span className='badge badge-sm badge-primary indicator-item'>{numItemsInCart}</span>
             </div>
           </NavLink>
         </div>
@@ -3647,7 +3384,7 @@ import { clearCart } from '../features/cart/cartSlice';
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.userState.user);
+  const user = useSelector(state => state.userState.user);
 
   const handleLogout = () => {
     navigate('/');
@@ -3660,10 +3397,7 @@ const Header = () => {
         {user ? (
           <div className='flex gap-x-2 sm:gap-x-8 items-center'>
             <p className='text-xs sm:text-sm'>Hello, {user.username}</p>
-            <button
-              className='btn btn-xs btn-outline btn-primary '
-              onClick={handleLogout}
-            >
+            <button className='btn btn-xs btn-outline btn-primary ' onClick={handleLogout}>
               logout
             </button>
           </div>
@@ -3691,11 +3425,11 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 const NavLinks = () => {
-  const user = useSelector((state) => state.userState.user);
+  const user = useSelector(state => state.userState.user);
 
   return (
     <>
-      {links.map((link) => {
+      {links.map(link => {
         const { id, url, text } = link;
         if ((url === 'checkout' || url === 'orders') && !user) return null;
         return (
@@ -3715,7 +3449,7 @@ export default NavLinks;
 ```js
 const Cart = () => {
   // temp
-  const { user } = useSelector((state) => state.userState);
+  const { user } = useSelector(state => state.userState);
 };
 ```
 
@@ -3772,9 +3506,7 @@ export const action = async ({ request }) => {
     toast.success('account created successfully');
     return redirect('/login');
   } catch (error) {
-    const errorMessage =
-      error?.response?.data?.error?.message ||
-      'please double check your credentials';
+    const errorMessage = error?.response?.data?.error?.message || 'please double check your credentials';
 
     toast.error(errorMessage);
     return null;
@@ -3784,10 +3516,7 @@ export const action = async ({ request }) => {
 const Register = () => {
   return (
     <section className='h-screen grid place-items-center'>
-      <Form
-        method='POST'
-        className='card w-96 py-8 px-8 bg-base-100 shadow-lg flex flex-col gap-y-4'
-      >
+      <Form method='POST' className='card w-96 py-8 px-8 bg-base-100 shadow-lg flex flex-col gap-y-4'>
         <h4 className='text-center text-3xl font-bold'>Register</h4>
         <FormInput type='text' label='username' name='username' />
         <FormInput type='email' label='email' name='email' />
@@ -3798,10 +3527,7 @@ const Register = () => {
 
         <p className='text-center'>
           Already a member?
-          <Link
-            to='/login'
-            className='ml-2 link link-hover link-primary capitalize'
-          >
+          <Link to='/login' className='ml-2 link link-hover link-primary capitalize'>
             login
           </Link>
         </p>
@@ -3839,7 +3565,7 @@ Login.jsx
 
 ```js
 export const action =
-  (store) =>
+  store =>
   async ({ request }) => {
     console.log(store);
     return store;
@@ -3900,7 +3626,7 @@ import { loginUser } from '../features/user/userSlice';
 import { useDispatch } from 'react-redux';
 
 export const action =
-  (store) =>
+  store =>
   async ({ request }) => {
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
@@ -3912,9 +3638,7 @@ export const action =
       return redirect('/');
     } catch (error) {
       console.log(error);
-      const errorMessage =
-        error?.response?.data?.error?.message ||
-        'please double check your credentials';
+      const errorMessage = error?.response?.data?.error?.message || 'please double check your credentials';
 
       toast.error(errorMessage);
       return null;
@@ -3972,7 +3696,7 @@ const Login = () => {
     try {
       const response = await customFetch.post('/auth/local', {
         identifier: 'test@test.com',
-        password: 'secret',
+        password: 'secret'
       });
       dispatch(loginUser(response.data));
       toast.success('welcome guest user');
@@ -3984,11 +3708,7 @@ const Login = () => {
   };
 };
 
-<button
-  type='button'
-  className='btn btn-secondary btn-block'
-  onClick={loginAsGuestUser}
->
+<button type='button' className='btn btn-secondary btn-block' onClick={loginAsGuestUser}>
   guest user
 </button>;
 ```
@@ -4025,7 +3745,7 @@ import { useSelector } from 'react-redux';
 import { CheckoutForm, SectionTitle, CartTotals } from '../components';
 
 const Checkout = () => {
-  const cartItems = useSelector((state) => state.cartState.cartTotal);
+  const cartItems = useSelector(state => state.cartState.cartTotal);
   if (cartTotal.length === 0) {
     return <SectionTitle text='Your cart is empty' />;
   }
@@ -4102,7 +3822,7 @@ Checkout.jsx
 import { redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-export const loader = (store) => async () => {
+export const loader = store => async () => {
   const user = store.getState().userState.user;
 
   if (!user) {
@@ -4180,10 +3900,10 @@ const router = createBrowserRouter([
         path: 'checkout',
         element: <Checkout />,
         loader: checkoutLoader(store),
-        action: checkoutAction(store),
-      },
-    ],
-  },
+        action: checkoutAction(store)
+      }
+    ]
+  }
 ]);
 ```
 
@@ -4198,13 +3918,12 @@ import { toast } from 'react-toastify';
 import { clearCart } from '../features/cart/cartSlice';
 
 export const action =
-  (store) =>
+  store =>
   async ({ request }) => {
     const formData = await request.formData();
     const { name, address } = Object.fromEntries(formData);
     const user = store.getState().userState.user;
-    const { cartItems, orderTotal, numItemsInCart } =
-      store.getState().cartState;
+    const { cartItems, orderTotal, numItemsInCart } = store.getState().cartState;
 
     const info = {
       name,
@@ -4212,7 +3931,7 @@ export const action =
       chargeTotal: orderTotal,
       orderTotal: formatPrice(orderTotal),
       cartItems,
-      numItemsInCart,
+      numItemsInCart
     };
     try {
       const response = await customFetch.post(
@@ -4220,8 +3939,8 @@ export const action =
         { data: info },
         {
           headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
+            Authorization: `Bearer ${user.token}`
+          }
         }
       );
       store.dispatch(clearCart());
@@ -4229,9 +3948,7 @@ export const action =
       return redirect('/orders');
     } catch (error) {
       console.log(error);
-      const errorMessage =
-        error?.response?.data?.error?.message ||
-        'there was an error placing your order';
+      const errorMessage = error?.response?.data?.error?.message || 'there was an error placing your order';
 
       toast.error(errorMessage);
       return null;
@@ -4347,7 +4064,7 @@ import { customFetch } from '../utils';
 import { OrdersList, PaginationContainer, SectionTitle } from '../components';
 
 export const loader =
-  (store) =>
+  store =>
   async ({ request }) => {
     const user = store.getState().userState.user;
 
@@ -4355,23 +4072,19 @@ export const loader =
       toast.warn('You must be logged in to view orders');
       return redirect('/login');
     }
-    const params = Object.fromEntries([
-      ...new URL(request.url).searchParams.entries(),
-    ]);
+    const params = Object.fromEntries([...new URL(request.url).searchParams.entries()]);
     try {
       const response = await customFetch.get('/orders', {
         params,
         headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
+          Authorization: `Bearer ${user.token}`
+        }
       });
 
       return { orders: response.data.data, meta: response.data.meta };
     } catch (error) {
       console.log(error);
-      const errorMessage =
-        error?.response?.data?.error?.message ||
-        'there was an error accessing your orders';
+      const errorMessage = error?.response?.data?.error?.message || 'there was an error accessing your orders';
 
       toast.error(errorMessage);
       if (error?.response?.status === 401 || 403) return redirect('/login');
@@ -4473,9 +4186,7 @@ const OrdersList = () => {
   const { orders, meta } = useLoaderData();
   return (
     <div className='mt-8'>
-      <h4 className='mb-4 capitalize'>
-        total orders : {meta.pagination.total}
-      </h4>
+      <h4 className='mb-4 capitalize'>total orders : {meta.pagination.total}</h4>
       <div className='overflow-x-auto '>
         <table className='table table-zebra'>
           {/* head */}
@@ -4489,10 +4200,9 @@ const OrdersList = () => {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => {
+            {orders.map(order => {
               const id = order.id;
-              const { name, address, numItemsInCart, orderTotal, createdAt } =
-                order.attributes;
+              const { name, address, numItemsInCart, orderTotal, createdAt } = order.attributes;
 
               const date = day(createdAt).format('hh:mm a - MMM Do, YYYY ');
               return (
@@ -4557,7 +4267,7 @@ const ComplexPaginationContainer = () => {
 
   const { search, pathname } = useLocation();
   const navigate = useNavigate();
-  const handlePageChange = (pageNumber) => {
+  const handlePageChange = pageNumber => {
     const searchParams = new URLSearchParams(search);
     searchParams.set('page', pageNumber);
     navigate(`${pathname}?${searchParams.toString()}`);
@@ -4565,13 +4275,7 @@ const ComplexPaginationContainer = () => {
 
   const addPageButton = ({ pageNumber, activeClass }) => {
     return (
-      <button
-        key={pageNumber}
-        onClick={() => handlePageChange(pageNumber)}
-        className={`btn btn-xs sm:btn-md border-none join-item ${
-          activeClass ? 'bg-base-300 border-base-300 ' : ''
-        }`}
-      >
+      <button key={pageNumber} onClick={() => handlePageChange(pageNumber)} className={`btn btn-xs sm:btn-md border-none join-item ${activeClass ? 'bg-base-300 border-base-300 ' : ''}`}>
         {pageNumber}
       </button>
     );
@@ -4605,9 +4309,7 @@ const ComplexPaginationContainer = () => {
     }
 
     // last button
-    pageButtons.push(
-      addPageButton({ pageNumber: pageCount, activeClass: page === pageCount })
-    );
+    pageButtons.push(addPageButton({ pageNumber: pageCount, activeClass: page === pageCount }));
     return pageButtons;
   };
 
@@ -4664,9 +4366,9 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 5,
-    },
-  },
+      staleTime: 1000 * 60 * 5
+    }
+  }
 });
 
 const router = createBrowserRouter([
@@ -4679,33 +4381,33 @@ const router = createBrowserRouter([
         index: true,
         element: <Landing />,
         loader: landingLoader(queryClient),
-        errorElement: <ErrorElement />,
+        errorElement: <ErrorElement />
       },
       {
         path: 'products',
         element: <Products />,
         loader: productsLoader(queryClient),
-        errorElement: <ErrorElement />,
+        errorElement: <ErrorElement />
       },
       {
         path: 'products/:id',
         element: <SingleProduct />,
         loader: singleProductLoader(queryClient),
-        errorElement: <ErrorElement />,
+        errorElement: <ErrorElement />
       },
       {
         path: 'checkout',
         element: <Checkout />,
         loader: checkoutLoader(store),
-        action: checkoutAction(store, queryClient),
+        action: checkoutAction(store, queryClient)
       },
       {
         path: 'orders',
         element: <Orders />,
-        loader: ordersLoader(store, queryClient),
-      },
-    ],
-  },
+        loader: ordersLoader(store, queryClient)
+      }
+    ]
+  }
 ]);
 
 const App = () => {
@@ -4722,7 +4424,7 @@ export default App;
 Landing.js
 
 ```js
-export const loader = (queryClient) => async () => {
+export const loader = queryClient => async () => {
   const response = await customFetch(url);
   const products = response.data.data;
   return { products };
@@ -4740,10 +4442,10 @@ Landing.jsx
 ```js
 const featuredProductsQuery = {
   queryKey: ['featuredProducts'],
-  queryFn: () => customFetch(url),
+  queryFn: () => customFetch(url)
 };
 
-export const loader = (queryClient) => async () => {
+export const loader = queryClient => async () => {
   const response = await queryClient.ensureQueryData(featuredProductsQuery);
   const products = response.data.data;
   return { products };
@@ -4759,19 +4461,17 @@ export const loader = (queryClient) => async () => {
 SingleProduct.jsx
 
 ```js
-const singleProductQuery = (id) => {
+const singleProductQuery = id => {
   return {
     queryKey: ['singleProduct', id],
-    queryFn: () => customFetch.get(`/products/${id}`),
+    queryFn: () => customFetch.get(`/products/${id}`)
   };
 };
 
 export const loader =
-  (queryClient) =>
+  queryClient =>
   async ({ params }) => {
-    const response = await queryClient.ensureQueryData(
-      singleProductQuery(params.id)
-    );
+    const response = await queryClient.ensureQueryData(singleProductQuery(params.id));
     return { product: response.data.data };
   };
 ```
@@ -4785,37 +4485,23 @@ export const loader =
 Products.jsx
 
 ```js
-const allProductsQuery = (queryParams) => {
-  const { search, category, company, sort, price, shipping, page } =
-    queryParams;
+const allProductsQuery = queryParams => {
+  const { search, category, company, sort, price, shipping, page } = queryParams;
 
   return {
-    queryKey: [
-      'products',
-      search ?? '',
-      category ?? 'all',
-      company ?? 'all',
-      sort ?? 'a-z',
-      price ?? 100000,
-      shipping ?? false,
-      page ?? 1,
-    ],
+    queryKey: ['products', search ?? '', category ?? 'all', company ?? 'all', sort ?? 'a-z', price ?? 100000, shipping ?? false, page ?? 1],
     queryFn: () =>
       customFetch(url, {
-        params: queryParams,
-      }),
+        params: queryParams
+      })
   };
 };
 
 export const loader =
-  (queryClient) =>
+  queryClient =>
   async ({ request }) => {
-    const params = Object.fromEntries([
-      ...new URL(request.url).searchParams.entries(),
-    ]);
-    const response = await queryClient.ensureQueryData(
-      allProductsQuery(params)
-    );
+    const params = Object.fromEntries([...new URL(request.url).searchParams.entries()]);
+    const response = await queryClient.ensureQueryData(allProductsQuery(params));
 
     const products = response.data.data;
     const meta = response.data.meta;
@@ -4838,26 +4524,18 @@ setup react query and invoke in loader
 import { redirect, useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { customFetch } from '../utils';
-import {
-  OrdersList,
-  ComplexPaginationContainer,
-  SectionTitle,
-} from '../components';
+import { OrdersList, ComplexPaginationContainer, SectionTitle } from '../components';
 
 export const ordersQuery = (params, user) => {
   return {
-    queryKey: [
-      'orders',
-      user.username,
-      params.page ? parseInt(params.page) : 1,
-    ],
+    queryKey: ['orders', user.username, params.page ? parseInt(params.page) : 1],
     queryFn: () =>
       customFetch.get('/orders', {
         params,
         headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      }),
+          Authorization: `Bearer ${user.token}`
+        }
+      })
   };
 };
 
@@ -4870,23 +4548,17 @@ export const loader =
       toast.warn('You must be logged in to view orders');
       return redirect('/login');
     }
-    const params = Object.fromEntries([
-      ...new URL(request.url).searchParams.entries(),
-    ]);
+    const params = Object.fromEntries([...new URL(request.url).searchParams.entries()]);
     try {
-      const response = await queryClient.ensureQueryData(
-        ordersQuery(params, user)
-      );
+      const response = await queryClient.ensureQueryData(ordersQuery(params, user));
 
       return {
         orders: response.data.data,
-        meta: response.data.meta,
+        meta: response.data.meta
       };
     } catch (error) {
       console.log(error);
-      const errorMessage =
-        error?.response?.data?.error?.message ||
-        'there was an error accessing your orders';
+      const errorMessage = error?.response?.data?.error?.message || 'there was an error accessing your orders';
 
       toast.error(errorMessage);
       if (error?.response?.status === 401 || 403) return redirect('/login');
