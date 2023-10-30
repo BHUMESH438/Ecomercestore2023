@@ -5,7 +5,9 @@ const themes = {
   winter: 'winter',
   dracula: 'dracula'
 };
-
+const getUserFromLocalStorage = () => {
+  return JSON.parse(localStorage.getItem('user')) || null;
+};
 const getThemeFromLocalStorage = () => {
   const theme = localStorage.getItem('theme') || themes.winter;
   document.documentElement.setAttribute('data-theme', theme);
@@ -13,7 +15,7 @@ const getThemeFromLocalStorage = () => {
 };
 
 const initialState = {
-  user: { username: 'bhu' },
+  user: getUserFromLocalStorage(),
   theme: getThemeFromLocalStorage()
 };
 const userSlice = createSlice({
@@ -21,15 +23,23 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     loginUser: (state, action) => {
-      console.log('login');
+      //after login user property will be occupied
+      console.log('login action ', action);
+      const user = { ...action.payload.user, token: action.payload.jwt };
+      state.user = user;
+      localStorage.setItem('user', JSON.stringify(user));
     },
     logoutUser: state => {
-      console.log('logout');
+      //after logout user property will be null
+      //navlinks checkout and orders will not shown
+      state.user = null; //used in header-navlink
+      localStorage.removeItem('user');
+      toast.success('logged out successfully');
     },
     toggleTheme: state => {
-      console.log(state);
       const { dracula, winter } = themes;
       state.theme = state.theme === dracula ? winter : dracula;
+      //here we just set theme
       document.documentElement.setAttribute('data-theme', state.theme);
       localStorage.setItem('theme', state.theme);
     }
@@ -39,3 +49,8 @@ const userSlice = createSlice({
 export const { loginUser, logoutUser, toggleTheme } = userSlice.actions;
 
 export default userSlice.reducer;
+
+//if the logout user is null then  header will show the signin else  logout
+/*for theme 
+1. we initially set the value from either from localstorage or programaticallt 
+2.toggling we programattincaly cahnge the value in the dom */

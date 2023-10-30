@@ -11,3 +11,4 @@ const FormInput = ({ label, name, type, defaultValue, size }) => {
 export default FormInput;
 
 //daisy ui form control
+//

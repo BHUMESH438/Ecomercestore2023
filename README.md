@@ -3460,6 +3460,14 @@ const Cart = () => {
 - test in Thunder Client
 - setup action in Register
 - add action to Register route in App.jsx
+  {
+  "username":"james smith",
+  "email":"james@gmail.com",
+  "password":"secret"
+  }
+  {
+  "identifier":"james@gmail.com","password":"secret"
+  }
 
 ### Register.js
 
@@ -3988,7 +3996,6 @@ CheckoutForm.jsx
     'there was an error placing your order';
   toast.error(errorMessage);
   if (error?.response?.status === 401 || 403) return redirect('/login');
-
   return null;
 }
 ```
