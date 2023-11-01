@@ -3,17 +3,31 @@ import { customFetch } from '../utils';
 
 const url = `/products`;
 
-export const loader = async ({ request }) => {
-  // gives keyvalue pairs
-  const params = Object.fromEntries([...new URL(request.url).searchParams.entries()]);
-  const response = await customFetch(url, { params });
-  const {
-    data: { data: productdata }
-  } = response;
-  // const productdata = response.data.data;
-  const meta = response.data.meta;
-  return { productdata, meta, params };
+const allProductsQuery = queryParams => {
+  const { search, category, company, sort, price, shipping, page } = queryParams;
+  //the other query key than the products are for the filter search componenet as once the user searched a filterd search and again repeats the same it will be cached and no loading time occurs. to avoid null/undefined ?? is used.nullishcollasing operator
+  return {
+    queryKey: ['products', search ?? '', category ?? 'all', company ?? 'all', sort ?? 'a-z', price ?? 100000, shipping ?? false, page ?? 1],
+    queryFn: () =>
+      customFetch(url, {
+        params: queryParams
+      })
+  };
 };
+
+export const loader =
+  queryClient =>
+  async ({ request }) => {
+    // gives keyvalue pairs
+    const params = Object.fromEntries([...new URL(request.url).searchParams.entries()]);
+    const response = await queryClient.ensureQueryData(allProductsQuery(params));
+    const {
+      data: { data: productdata }
+    } = response;
+    // const productdata = response.data.data;
+    const meta = response.data.meta;
+    return { productdata, meta, params };
+  };
 
 const Product = () => {
   return (

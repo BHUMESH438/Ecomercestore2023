@@ -9,6 +9,7 @@ const HomeLayout = () => {
     <>
       <Header />
       <Navbar />
+      {/* after each link the page will load */}
       {isPageLoading ? (
         <Loading />
       ) : (

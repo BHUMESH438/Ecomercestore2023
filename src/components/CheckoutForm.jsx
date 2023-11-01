@@ -5,17 +5,21 @@ import { customFetch, formatPrice } from '../utils';
 import { toast } from 'react-toastify';
 import { clearCart } from '../features/cart/cartSlice';
 
+//cart to order
+//order fn when each time ordered by the single person the data id must increase by one
 export const action =
-  store =>
+  (store, queryClient) =>
   async ({ request }) => {
-    const formData = request.formData();
+    //getting form data
+    const formData = await request.formData();
     const { name, address } = Object.fromEntries(formData);
+    //user and order from store
     const user = store.getState().userState.user;
     const { cartItems, orderTotal, numItemsInCart } = store.getState().cartState;
     const info = {
       name,
       address,
-      chargeTotal: orderTotal,
+      chargeTotal: orderTotal, //for payment
       orderTotal: formatPrice(orderTotal),
       cartItems,
       numItemsInCart
@@ -24,13 +28,15 @@ export const action =
       const response = await customFetch.post(
         '/orders',
         { data: info },
+        //resticted route go with headers and pass the token
         {
           headers: {
             Authorization: `Bearer ${user.token}`
           }
         }
       );
-
+      queryClient.removeQueries(['orders']);
+      console.log('order response', response);
       store.dispatch(clearCart());
       toast.success('order placed successfully');
       return redirect('/orders');

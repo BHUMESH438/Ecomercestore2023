@@ -4,11 +4,21 @@ import { customFetch, formatPrice, genrateAmount } from '../utils';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../features/cart/CartSlice';
 
-export const loader = async ({ params }) => {
-  const res = await customFetch(`/products/${params.id}`);
-  const singleproductdata = res.data.data;
-  return singleproductdata;
+const sigleProductQuery = id => {
+  return {
+    //we should pass the id for every single product query as each product will download in the networks and will be catched
+    //if we did not pass the id it will catch the first product paramid and does the same for the rest of the objects
+    queryKey: ['singleProduct', id],
+    queryFn: () => customFetch(`/products/${id}`)
+  };
 };
+export const loader =
+  queryClient =>
+  async ({ params }) => {
+    const res = await queryClient.ensureQueryData(sigleProductQuery(params.id));
+    const singleproductdata = res.data.data;
+    return singleproductdata;
+  };
 const SingleProduct = () => {
   const singleproductdata = useLoaderData();
   const { image, title, price, description, colors, company } = singleproductdata.attributes;
