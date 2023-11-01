@@ -13,7 +13,7 @@ const Header = () => {
     navigate('/');
     dispatch(logoutUser());
     dispatch(clearCart());
-    queryClient.removeQueries();
+    queryClient.removeQueries('orders');
   };
   return (
     <header className='bg-neutral py-2 text-neutral-content'>

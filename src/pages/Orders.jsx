@@ -19,9 +19,7 @@ export const ordersQuery = (params, user) => {
 export const loader =
   (store, queryClient) =>
   async ({ request }) => {
-    console.log('request>>>>>', request);
     const user = store.getState().userState.user;
-    console.log('user', user);
     //user not exist in redux
     if (!user) {
       toast.warn('You must be logged in to view orders');
@@ -33,7 +31,6 @@ export const loader =
     //sending the res
     try {
       const response = await queryClient.ensureQueryData(ordersQuery(params, user));
-      console.log(response);
       return { orders: response.data.data, meta: response.data.meta };
     } catch (error) {
       console.log(error);
