@@ -1,6 +1,5 @@
 import { Form, redirect } from 'react-router-dom';
 import FormInput from './FormInput';
-import SubmitBtn from './SubmitBtn';
 import { customFetch, formatPrice } from '../utils';
 import { toast } from 'react-toastify';
 import { clearCart } from '../features/cart/cartSlice';
@@ -57,7 +56,9 @@ const CheckoutForm = () => {
       <FormInput label='first name' name='name' type='text' />
       <FormInput label='address' name='address' type='text' />
       <div className='mt-4'>
-        <SubmitBtn />
+        <button type='submit' className='btn btn-primary btn-block'>
+          submit
+        </button>
       </div>
     </Form>
   );
